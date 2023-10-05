@@ -1,8 +1,24 @@
 from test_framework import generic_test
-
+import math
 
 def is_palindrome_number(x: int) -> bool:
-    # TODO - you fill in here.
+    if x <= 0:
+        return x == 0
+
+    x_len = math.floor(math.log10(x)) + 1
+
+    mask = 10 ** (x_len - 1)
+
+    for _ in range(x_len // 2):
+        msd = x // mask
+        lsd = x % 10
+        if msd != lsd:
+            return False
+        
+        x %= mask
+        x //= 10
+        mask //= 100
+
     return True
 
 
