@@ -4,7 +4,13 @@ from test_framework import generic_test
 
 
 def apply_permutation(perm: List[int], A: List[int]) -> None:
-    # TODO - you fill in here.
+    for ix in range(len(A)):
+        if perm[ix] >= 0:
+            perm_ix = perm[ix]
+            while perm_ix != ix:
+                A[perm_ix], A[ix] = A[ix], A[perm_ix]
+                perm[perm_ix] -= len(perm)
+                perm_ix = perm[perm_ix] + len(perm)
     return
 
 
